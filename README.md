@@ -1,3 +1,9 @@
+To Download Direct Zip File
+Hit in browser || Install The Zip File, Extract/Rename/Change Package and Go Start Your Dream Project ;-)
+
+https://github.com/BpandaOnline/News-KMP-App/archive/refs/heads/KMPTemplateBaseMaster.zip
+
+
 This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM).
 
 * [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
