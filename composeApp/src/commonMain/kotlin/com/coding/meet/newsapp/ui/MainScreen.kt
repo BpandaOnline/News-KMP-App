@@ -45,7 +45,7 @@ fun MainScreen(
         mutableStateOf(navBackStackEntry?.destination?.route)
     }
 
-    val currentRoute by rememberSaveable(navBackStackEntry) {
+    val currentRoute by remember(navBackStackEntry) {
         derivedStateOf { (navBackStackEntry?.destination?.route) }
     }
 
@@ -62,9 +62,8 @@ fun MainScreen(
     }
 
     DisposableEffect(Unit){
-        previousRoute = currentRoute
         onDispose {
-
+            previousRoute = currentRoute
         }
     }
 
