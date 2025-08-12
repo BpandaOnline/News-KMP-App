@@ -13,12 +13,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import coil3.compose.AsyncImage
 import com.coding.meet.newsapp.data.Data
 import com.coding.meet.newsapp.theme.imageSize
 import com.coding.meet.newsapp.theme.mediumPadding
 import com.coding.meet.newsapp.theme.xxSmallPadding
+import news_kmp_app.composeapp.generated.resources.Res
+import news_kmp_app.composeapp.generated.resources.logo
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun ArticleItem(
@@ -29,17 +34,19 @@ fun ArticleItem(
         modifier = Modifier.clickable {
             onClick()
         },
-        horizontalArrangement = Arrangement.spacedBy(xxSmallPadding)
+        horizontalArrangement = Arrangement.spacedBy(mediumPadding)
     ) {
-        Box(modifier = Modifier
-            .size(imageSize)
-            .clip(MaterialTheme.shapes.large)
-            .background(Color.Gray)
+        AsyncImage(
+            modifier = Modifier.size(imageSize),
+            model = article.image,
+            error = painterResource(Res.drawable.logo),
+            contentScale = ContentScale.Crop,
+            contentDescription = null
         )
         Column(
             modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(mediumPadding)
-        ){
+            verticalArrangement = Arrangement.spacedBy(xxSmallPadding)
+        ) {
             Text(
                 text = article.description,
                 style = MaterialTheme.typography.titleMedium,

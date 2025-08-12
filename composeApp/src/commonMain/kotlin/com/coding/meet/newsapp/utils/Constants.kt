@@ -40,7 +40,7 @@ val bottomNavigationItemList = listOf(
 val articles: List<Data> = listOf(
     Data(
         createdate = "2025-08-10",
-        description = "Sample description for preview",
+        description = "toijt5oiyiohy",
         image = "https://bpanda.online/bmanify/uploadedFiles/file_688ac018c2037.jpg",
         postid = "post123",
         tags = "nature,travel",
