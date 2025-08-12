@@ -6,28 +6,19 @@ import androidx.compose.runtime.getValue
 import com.coding.meet.newsapp.ui.common.ArticleListScreen
 import com.coding.meet.newsapp.ui.common.EmptyContent
 import com.coding.meet.newsapp.ui.common.ShimmerEffect
-import com.coding.meet.newsapp.ui.common.viewmodel.rememberViewModel
+import com.coding.meet.newsapp.ui.common.videmodel.rememberViewModel
 import com.coding.meet.newsapp.utils.articles
 
 
 @Composable
 fun HeadlineScreen() {
-
     val headLineViewModel = rememberViewModel { HeadLineViewModel() }
     val uiState by headLineViewModel.newsStateFlow.collectAsState()
 
     uiState.DisplayResult(
-        onIdle = {
-
-        },
-        onLoading = {
-            ShimmerEffect()
-        },
-        onSuccess = {
-            ArticleListScreen(articles)
-        },
-        onError = {
-            EmptyContent(it)
-        }
+        onIdle = { /* Optional placeholder */ },
+        onLoading = { ShimmerEffect() },
+        onSuccess = { ArticleListScreen(articles) },
+        onError = { EmptyContent(it) }
     )
 }
