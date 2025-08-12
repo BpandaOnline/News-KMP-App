@@ -1,4 +1,4 @@
-package com.coding.meet.newsapp.data
+package com.coding.meet.newsapp.data.model
 
 data class NewsResponse(
     val `data`: List<Data>,

@@ -1,4 +1,4 @@
-package com.coding.meet.newsapp.data
+package com.coding.meet.newsapp.data.model
 
 data class Data(
     val createdate: String,

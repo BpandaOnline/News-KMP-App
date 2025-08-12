@@ -16,7 +16,7 @@ fun main() = application {
             position = WindowPosition(Alignment.Center)
         )
     ) {
-        window.minimumSize = Dimension(1000, 760)
+        window.minimumSize = Dimension(1000, 500)
         App()
     }
 }

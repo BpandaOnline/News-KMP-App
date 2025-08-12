@@ -1,7 +1,11 @@
 package com.coding.meet.newsapp.utils
 
-import com.coding.meet.newsapp.data.Data
-import com.coding.meet.newsapp.data.NewsResponse
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import com.coding.meet.newsapp.data.model.Data
+import com.coding.meet.newsapp.data.model.NewsResponse
 import com.coding.meet.newsapp.ui.MainScreen
 import com.coding.meet.newsapp.ui.navigation.BottomNavigationItem
 import com.coding.meet.newsapp.ui.navigation.MainRouteScreen
@@ -132,3 +136,11 @@ val newsResponse = NewsResponse(
     articles,
     "success"
 )
+
+val FadeIn = fadeIn(animationSpec = tween(220, delayMillis = 90)) +
+        scaleIn(
+            initialScale = 0.92f,
+            animationSpec = tween(220, delayMillis = 90)
+        )
+
+val FadeOut = fadeOut(animationSpec = tween(90))

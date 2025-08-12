@@ -38,7 +38,9 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.0-alpha06")
+
+            //Coil
+            implementation(libs.coil.network.okhttp)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -53,20 +55,24 @@ kotlin {
 
             // Navigation & ViewModel
             implementation(libs.navigation.compose)
-            implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
             // Coil core for all platforms
-            implementation("io.coil-kt.coil3:coil-compose:3.0.0-alpha06")
+            implementation(libs.coil.compose)
+
+            implementation(libs.androidx.lifecycle.viewmodel)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
-            implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.0-alpha06")
+
+            //Coil
+            implementation(libs.coil.network.okhttp)
         }
         iosMain.dependencies {
-            implementation("io.coil-kt.coil3:coil-network-ktor:3.0.0-alpha06")
-            implementation("io.ktor:ktor-client-darwin:2.3.8")
+            //Coil
+            implementation(libs.coil.network.ktor)
+            implementation(libs.ktor.client.darwin)
         }
     }
 }

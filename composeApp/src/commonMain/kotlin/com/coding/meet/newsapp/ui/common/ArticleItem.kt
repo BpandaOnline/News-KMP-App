@@ -17,7 +17,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import coil3.compose.AsyncImage
-import com.coding.meet.newsapp.data.Data
+import com.coding.meet.newsapp.data.model.Data
 import com.coding.meet.newsapp.theme.imageSize
 import com.coding.meet.newsapp.theme.mediumPadding
 import com.coding.meet.newsapp.theme.xxSmallPadding

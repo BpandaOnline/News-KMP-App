@@ -7,7 +7,7 @@ androidx-activity = "1.10.1"
 androidx-appcompat = "1.7.1"
 androidx-core = "1.16.0"
 androidx-espresso-core = "3.7.0"
-androidx-lifecycle = "2.9.1"
+androidx-lifecycle = "2.8.2"
 compose-plugin = "1.8.2"
 composeHotReload = "1.0.0-beta04"
 kotlin = "2.2.0"
@@ -15,6 +15,7 @@ navigationCompose = "2.9.0-beta03"
 ksp = "2.2.0-2.0.2"
 coil3 = "3.0.0-alpha06"
 coroutines = "1.10.2"
+lifecycleViewmodelKtx = "2.9.2"
 
 
 [libraries]
@@ -26,7 +27,12 @@ navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-co
 #desktop implemented for coroutine Dispatchers
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
 
-
+#Coil Implementation
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
+coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil3" }
+coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil3" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version = "2.3.8" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

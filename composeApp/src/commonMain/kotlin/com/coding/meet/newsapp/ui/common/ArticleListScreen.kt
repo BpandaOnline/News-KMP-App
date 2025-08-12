@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
+import com.coding.meet.newsapp.data.model.Data
 import com.coding.meet.newsapp.theme.xLargePadding
 import com.coding.meet.newsapp.utils.Type
 import com.coding.meet.newsapp.utils.articles
@@ -16,7 +17,7 @@ import com.coding.meet.newsapp.utils.getType
 
 
 @Composable
-fun ArticleListScreen() {
+fun ArticleListScreen(articleList: List<Data>) {
 
     val isDesktop = remember{
         getType() == Type.Desktop
@@ -28,7 +29,7 @@ fun ArticleListScreen() {
         horizontalArrangement = Arrangement.spacedBy(xLargePadding),
         contentPadding = PaddingValues(xLargePadding)
     ) {
-        items(articles, key = {
+        items(articleList, key = {
             it.createdate + getRandomId()
         }){ article ->
             ArticleItem(article = article, onClick = {
