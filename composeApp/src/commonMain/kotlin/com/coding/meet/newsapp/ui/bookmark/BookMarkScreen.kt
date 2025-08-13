@@ -1,19 +1,29 @@
 package com.coding.meet.newsapp.ui.bookmark
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.material.Text
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import com.coding.meet.newsapp.ui.common.ArticleListScreen
+import com.coding.meet.newsapp.ui.common.EmptyContent
+import com.coding.meet.newsapp.ui.common.ShimmerEffect
+import com.coding.meet.newsapp.ui.common.videmodel.rememberViewModel
+import com.coding.meet.newsapp.utils.articles
 
 @Composable
 fun BookMarkScreen() {
-    Box(){
-        Text("BookMark", fontSize = 32.sp, modifier = Modifier.align(Alignment.Center),
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onBackground)
-    }
+    val bookMarkViewModel = rememberViewModel { BookMarkViewModel() }
+    val uiState by bookMarkViewModel.newsStateFlow.collectAsState()
+
+    uiState.DisplayResult(
+        onIdle = { /* Optional placeholder */ },
+        onLoading = { ShimmerEffect() },
+        onSuccess = { articleList ->
+            if(articleList.isEmpty()){
+                EmptyContent("No News")
+            }else {
+                ArticleListScreen(articles)
+            }
+        },
+        onError = { EmptyContent(it) }
+    )
 }

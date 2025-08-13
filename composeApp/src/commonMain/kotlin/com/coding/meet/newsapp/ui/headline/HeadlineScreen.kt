@@ -18,7 +18,13 @@ fun HeadlineScreen() {
     uiState.DisplayResult(
         onIdle = { /* Optional placeholder */ },
         onLoading = { ShimmerEffect() },
-        onSuccess = { ArticleListScreen(articles) },
+        onSuccess = { articleList ->
+            if(articleList.isEmpty()){
+                EmptyContent("No News")
+            }else {
+                ArticleListScreen(articles)
+            }
+        },
         onError = { EmptyContent(it) }
     )
 }

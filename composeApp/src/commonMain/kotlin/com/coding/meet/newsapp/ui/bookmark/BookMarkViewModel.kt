@@ -1,4 +1,4 @@
-package com.coding.meet.newsapp.ui.headline
+package com.coding.meet.newsapp.ui.bookmark
 
 import com.coding.meet.newsapp.data.model.Data
 import com.coding.meet.newsapp.ui.common.videmodel.KmpViewModel
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class HeadLineViewModel : KmpViewModel() {
+class BookMarkViewModel : KmpViewModel() {
     private val _newsStateFlow = MutableStateFlow<Resource<List<Data>>>(Resource.Idle)
     val newsStateFlow: StateFlow<Resource<List<Data>>> get() = _newsStateFlow
 
