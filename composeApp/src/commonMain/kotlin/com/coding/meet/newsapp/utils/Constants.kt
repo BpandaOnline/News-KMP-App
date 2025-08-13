@@ -11,11 +11,15 @@ import com.coding.meet.newsapp.ui.navigation.BottomNavigationItem
 import com.coding.meet.newsapp.ui.navigation.MainRouteScreen
 import news_kmp_app.composeapp.generated.resources.Res
 import news_kmp_app.composeapp.generated.resources.bookmark
+import news_kmp_app.composeapp.generated.resources.dark_mode
 import news_kmp_app.composeapp.generated.resources.headlines
 import news_kmp_app.composeapp.generated.resources.ic_bookmark_outlined
 import news_kmp_app.composeapp.generated.resources.ic_headline
 import news_kmp_app.composeapp.generated.resources.ic_search
+import news_kmp_app.composeapp.generated.resources.light_mode
 import news_kmp_app.composeapp.generated.resources.search
+import news_kmp_app.composeapp.generated.resources.system_default
+import org.jetbrains.compose.resources.StringResource
 import kotlin.random.Random
 
 enum class Type{
@@ -132,10 +136,11 @@ val articles: List<Data> = listOf(
     )
 )
 
-val newsResponse = NewsResponse(
-    articles,
-    "success"
-)
+enum class Theme(val title: StringResource){
+    SYSTEM_DEFAULT(Res.string.system_default),
+    LIGHT_MODE(Res.string.light_mode),
+    DARK_MODE(Res.string.dark_mode)
+}
 
 val FadeIn = fadeIn(animationSpec = tween(220, delayMillis = 90)) +
         scaleIn(
