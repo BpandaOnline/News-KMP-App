@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import com.coding.meet.newsapp.utils.Theme
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -30,12 +31,24 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun NewsAppTheme(
+    appTheme: String?,
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+    val colorScheme = when(appTheme) {
+        Theme.LIGHT_MODE.name ->{
+            LightColorScheme
+        }
+        Theme.DARK_MODE.name -> {
+            DarkColorScheme
+        }
+        else -> {
+            if(darkTheme){
+                DarkColorScheme
+            }else{
+                LightColorScheme
+            }
+        }
     }
 
     MaterialTheme(

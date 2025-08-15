@@ -1,5 +1,7 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.*
+import com.codingfeline.buildkonfig.compiler.FieldSpec
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -7,6 +9,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.buildkonfig)
 }
 
 kotlin {
@@ -61,6 +64,11 @@ kotlin {
             implementation(libs.coil.compose)
 
             implementation(libs.androidx.lifecycle.viewmodel)
+
+            //dataStore
+            implementation(libs.androidx.data.store.core)
+
+            implementation("org.jetbrains.kotlinx:atomicfu:0.24.0")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -120,5 +128,21 @@ compose.desktop {
             packageName = "com.coding.meet.newsapp"
             packageVersion = "1.0.0"
         }
+    }
+}
+
+buildkonfig {
+    packageName = "com.coding.meet.newsapp"
+
+    val localProperties =
+        Properties().apply {
+            val propsFile = rootProject.file("local.properties")
+            if (propsFile.exists()) {
+                load(propsFile.inputStream())
+            }
+        }
+
+    defaultConfigs {
+        buildConfigField(FieldSpec.Type.STRING, "API_KEY", localProperties["API_KEY"]?.toString() ?: "",)
     }
 }

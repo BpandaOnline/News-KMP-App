@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.navigation.NavController
 import com.coding.meet.newsapp.theme.mediumPadding
 import com.coding.meet.newsapp.ui.common.ArticleListScreen
 import com.coding.meet.newsapp.ui.common.EmptyContent
@@ -17,7 +18,7 @@ import com.coding.meet.newsapp.ui.search.components.SearchBarScreen
 import com.coding.meet.newsapp.utils.articles
 
 @Composable
-fun SearchScreen() {
+fun SearchScreen(navController: NavController) {
     var searchQuery by rememberSaveable() {
         mutableStateOf("")
     }
@@ -47,10 +48,10 @@ fun SearchScreen() {
             },
             onLoading = { ShimmerEffect() },
             onSuccess = { articleList ->
-                if(articleList.isEmpty()){
+                if (articleList.isEmpty()) {
                     EmptyContent("No News")
-                }else {
-                    ArticleListScreen(articles)
+                } else {
+                    ArticleListScreen(articles, navController = navController)
                 }
             },
             onError = { EmptyContent(it) }

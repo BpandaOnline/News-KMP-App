@@ -15,7 +15,10 @@ sealed class MainRouteScreen(var route: String){
 }
 
 sealed class SettingRouteScreen(var route: String){
-
     object Setting : MainRouteScreen("setting")
 
+}
+
+sealed class NewsRouteScreen(var route: String){
+    object NewsDetail : NewsRouteScreen("newsDetail")
 }

@@ -4,9 +4,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
+import com.coding.meet.newsapp.BuildKonfig
 import com.coding.meet.newsapp.data.model.Data
-import com.coding.meet.newsapp.data.model.NewsResponse
-import com.coding.meet.newsapp.ui.MainScreen
 import com.coding.meet.newsapp.ui.navigation.BottomNavigationItem
 import com.coding.meet.newsapp.ui.navigation.MainRouteScreen
 import news_kmp_app.composeapp.generated.resources.Res
@@ -20,8 +19,11 @@ import news_kmp_app.composeapp.generated.resources.light_mode
 import news_kmp_app.composeapp.generated.resources.search
 import news_kmp_app.composeapp.generated.resources.system_default
 import org.jetbrains.compose.resources.StringResource
-import kotlin.random.Random
 
+
+val apiKey = BuildKonfig.API_KEY
+
+const val dataStoreFileName = "setting.preferences_pb"
 enum class Type{
     Mobile,
     Desktop
