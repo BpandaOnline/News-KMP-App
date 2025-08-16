@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.composeHotReload)
     alias(libs.plugins.buildkonfig)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 kotlin {
@@ -44,6 +45,9 @@ kotlin {
 
             //Coil
             implementation(libs.coil.network.okhttp)
+
+            // Ktor
+            implementation(libs.ktor.client.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -69,17 +73,32 @@ kotlin {
             implementation(libs.androidx.data.store.core)
 
             implementation("org.jetbrains.kotlinx:atomicfu:0.24.0")
+
+            // Ktor
+            implementation(libs.ktor.core)
+            implementation(libs.ktor.json)
+            implementation(libs.ktor.logging)
+            implementation(libs.ktor.negotiation)
+            implementation(libs.kotlinx.serialization.json)
+
+            // Kermit  for logging
+            implementation(libs.kermit)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
-            implementation(libs.kotlinx.coroutines.swing)
 
             //Coil
             implementation(libs.coil.network.okhttp)
+            // ktor
+            implementation(libs.ktor.client.okhttp)
+            implementation(libs.kotlinx.coroutines.swing)
         }
         iosMain.dependencies {
             //Coil
             implementation(libs.coil.network.ktor)
+            implementation(libs.ktor.client.darwin)
+
+            // Ktor
             implementation(libs.ktor.client.darwin)
         }
     }

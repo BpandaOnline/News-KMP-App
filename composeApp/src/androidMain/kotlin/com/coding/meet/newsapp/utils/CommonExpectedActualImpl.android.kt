@@ -4,8 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CoroutineScope
 import java.util.UUID
 
 actual fun getType(): Type {

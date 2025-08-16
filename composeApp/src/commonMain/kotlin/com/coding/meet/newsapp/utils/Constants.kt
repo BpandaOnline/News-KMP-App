@@ -24,6 +24,8 @@ import org.jetbrains.compose.resources.StringResource
 val apiKey = BuildKonfig.API_KEY
 
 const val dataStoreFileName = "setting.preferences_pb"
+
+const val BASE_URL = "https://bpanda.online/"
 enum class Type{
     Mobile,
     Desktop
@@ -55,7 +57,6 @@ val articles: List<Data> = listOf(
         postid = "post123",
         tags = "nature,travel",
         thumbnail = "https://bpanda.online/bmanify/uploadedFiles/file_688ac018c2037.jpg",
-        totallikes = 123,
         username = "JohnDoe",
         video = null
     ),
@@ -66,7 +67,6 @@ val articles: List<Data> = listOf(
         postid = "post123",
         tags = "nature,travel",
         thumbnail = "https://bpanda.online/bmanify/uploadedFiles/file_688ac018c2037.jpg",
-        totallikes = 123,
         username = "JohnDoe",
         video = null
     ),
@@ -77,7 +77,6 @@ val articles: List<Data> = listOf(
         postid = "post123",
         tags = "nature,travel",
         thumbnail = "https://bpanda.online/bmanify/uploadedFiles/file_688ac018c2037.jpg",
-        totallikes = 123,
         username = "JohnDoe",
         video = null
     ),
@@ -88,7 +87,6 @@ val articles: List<Data> = listOf(
         postid = "post123",
         tags = "nature,travel",
         thumbnail = "https://bpanda.online/bmanify/uploadedFiles/file_688ac018c2037.jpg",
-        totallikes = 123,
         username = "JohnDoe",
         video = null
     ),
@@ -99,7 +97,6 @@ val articles: List<Data> = listOf(
         postid = "post123",
         tags = "nature,travel",
         thumbnail = "https://bpanda.online/bmanify/uploadedFiles/file_688ac018c2037.jpg",
-        totallikes = 123,
         username = "JohnDoe",
         video = null
     ),
@@ -110,7 +107,6 @@ val articles: List<Data> = listOf(
         postid = "post123",
         tags = "nature,travel",
         thumbnail = "https://bpanda.online/bmanify/uploadedFiles/file_688ac018c2037.jpg",
-        totallikes = 123,
         username = "JohnDoe",
         video = null
     ),
@@ -121,7 +117,6 @@ val articles: List<Data> = listOf(
         postid = "post123",
         tags = "nature,travel",
         thumbnail = "https://bpanda.online/bmanify/uploadedFiles/file_688ac018c2037.jpg",
-        totallikes = 123,
         username = "JohnDoe",
         video = null
     ),
@@ -132,7 +127,6 @@ val articles: List<Data> = listOf(
         postid = "post123",
         tags = "nature,travel",
         thumbnail = "https://bpanda.online/bmanify/uploadedFiles/file_688ac018c2037.jpg",
-        totallikes = 123,
         username = "JohnDoe",
         video = null
     )

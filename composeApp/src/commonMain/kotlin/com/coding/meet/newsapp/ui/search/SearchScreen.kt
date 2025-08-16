@@ -9,13 +9,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
+import com.coding.meet.newsapp.data.repository.OnlineNewsRepository
 import com.coding.meet.newsapp.theme.mediumPadding
 import com.coding.meet.newsapp.ui.common.ArticleListScreen
 import com.coding.meet.newsapp.ui.common.EmptyContent
 import com.coding.meet.newsapp.ui.common.ShimmerEffect
 import com.coding.meet.newsapp.ui.common.videmodel.rememberViewModel
 import com.coding.meet.newsapp.ui.search.components.SearchBarScreen
-import com.coding.meet.newsapp.utils.articles
 
 @Composable
 fun SearchScreen(navController: NavController) {
@@ -23,7 +23,7 @@ fun SearchScreen(navController: NavController) {
         mutableStateOf("")
     }
 
-    val searchViewModel = rememberViewModel { SearchViewModel() }
+    val searchViewModel = rememberViewModel { SearchViewModel(OnlineNewsRepository()) }
     val uiState by searchViewModel.newsStateFlow.collectAsState()
 
     Column(
@@ -51,10 +51,12 @@ fun SearchScreen(navController: NavController) {
                 if (articleList.isEmpty()) {
                     EmptyContent("No News")
                 } else {
-                    ArticleListScreen(articles, navController = navController)
+                    ArticleListScreen(articleList, navController = navController)
                 }
             },
-            onError = { EmptyContent(it) }
+            onError = {
+                EmptyContent(it)
+            }
         )
     }
 }

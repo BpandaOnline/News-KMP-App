@@ -18,6 +18,8 @@ coroutines = "1.10.2"
 lifecycleViewmodelKtx = "2.9.2"
 buildkonfig = "0.17.1"
 androidx-data-store = "1.1.7"
+kotlinx-serialization = "1.9.0"
+kermit = "2.0.6"
 
 
 [libraries]
@@ -33,9 +35,18 @@ kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil3" }
 coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil3" }
-ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version = "2.3.8" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-data-store-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "androidx-data-store" }
+
+ktor-core = { module = "io.ktor:ktor-client-core", version = "2.3.8" }
+ktor-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version = "2.3.8" }
+ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version = "2.3.8" }
+ktor-logging = { module = "io.ktor:ktor-client-logging", version = "2.3.8" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version = "2.3.8" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version = "2.3.8" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version = "2.3.8" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -46,3 +57,4 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

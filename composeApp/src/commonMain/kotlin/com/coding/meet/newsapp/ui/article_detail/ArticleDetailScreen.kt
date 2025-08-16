@@ -67,7 +67,7 @@ fun ArticleDetailScreen(
                 },
                 actions = {
                     IconButton(onClick = {
-                        shareLink(article.image)
+                        shareLink(article.thumbnail)
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Share,
@@ -76,7 +76,7 @@ fun ArticleDetailScreen(
                     }
 
                     IconButton(onClick = {
-                        uriHandler.openUri(article.image)
+                        uriHandler.openUri(article.thumbnail)
                     }) {
                         Icon(
                             painter = painterResource(Res.drawable.ic_browse),

@@ -16,6 +16,7 @@ import com.coding.meet.newsapp.utils.Type
 import com.coding.meet.newsapp.utils.articles
 import com.coding.meet.newsapp.utils.getRandomId
 import com.coding.meet.newsapp.utils.getType
+import kotlinx.serialization.json.Json
 
 
 @Composable
@@ -38,6 +39,10 @@ fun ArticleListScreen(
             it.createdate + getRandomId()
         }) { article ->
             ArticleItem(article = article, onClick = {
+                val articleStr = Json.encodeToString(article)
+                navController.currentBackStackEntry?.savedStateHandle?.apply {
+                    set("article",articleStr)
+                }
                 navController.navigate(NewsRouteScreen.NewsDetail.route)
             })
         }

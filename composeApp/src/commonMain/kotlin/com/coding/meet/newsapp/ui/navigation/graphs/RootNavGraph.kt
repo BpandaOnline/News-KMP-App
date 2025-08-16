@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.coding.meet.newsapp.data.model.Data
 import com.coding.meet.newsapp.ui.MainScreen
 import com.coding.meet.newsapp.ui.article_detail.ArticleDetailScreen
 import com.coding.meet.newsapp.ui.navigation.Graph
@@ -12,6 +13,7 @@ import com.coding.meet.newsapp.ui.navigation.SettingRouteScreen
 import com.coding.meet.newsapp.ui.setting.SettingScreen
 import com.coding.meet.newsapp.ui.setting.SettingViewModel
 import com.coding.meet.newsapp.utils.articles
+import kotlinx.serialization.json.Json
 
 @Composable
 fun RootNavGraph(
@@ -32,7 +34,10 @@ fun RootNavGraph(
         }
 
         composable(route = NewsRouteScreen.NewsDetail.route){
-            ArticleDetailScreen(rootNavController, articles[0])
+            rootNavController.previousBackStackEntry?.savedStateHandle?.get<String>("article")?.let {
+                val article : Data = Json.decodeFromString(it)
+                ArticleDetailScreen(rootNavController, article)
+            }
         }
     }
 }
