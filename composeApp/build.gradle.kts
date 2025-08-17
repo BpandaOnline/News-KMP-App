@@ -48,6 +48,9 @@ kotlin {
 
             // Ktor
             implementation(libs.ktor.client.android)
+
+            // Splash API
+            implementation(libs.androidx.core.splashscreen)
         }
         commonMain.dependencies {
             implementation(compose.runtime)

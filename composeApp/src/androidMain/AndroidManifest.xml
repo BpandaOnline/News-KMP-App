@@ -14,7 +14,7 @@
         android:theme="@style/Theme.NewsTheme">
         <activity
             android:exported="true"
-            android:theme="@style/Theme.NewsTheme"
+            android:theme="@style/Theme.MySplash"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|mnc|colorMode|density|fontScale|fontWeightAdjustment|keyboard|layoutDirection|locale|mcc|navigation|smallestScreenSize|touchscreen|uiMode"
             android:name=".MainActivity">
             <intent-filter>

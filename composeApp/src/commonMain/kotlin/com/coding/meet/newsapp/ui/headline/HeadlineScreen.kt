@@ -13,6 +13,11 @@ import com.coding.meet.newsapp.ui.common.EmptyContent
 import com.coding.meet.newsapp.ui.common.ShimmerEffect
 import com.coding.meet.newsapp.ui.common.videmodel.rememberViewModel
 import com.coding.meet.newsapp.utils.articles
+import news_kmp_app.composeapp.generated.resources.Res
+import news_kmp_app.composeapp.generated.resources.ic_browse
+import news_kmp_app.composeapp.generated.resources.ic_network_error
+import news_kmp_app.composeapp.generated.resources.no_news
+import org.jetbrains.compose.resources.stringResource
 
 
 @Composable
@@ -28,21 +33,25 @@ fun HeadlineScreen(navController: NavController) {
         onLoading = { ShimmerEffect() },
         onSuccess = { articleList ->
             if (articleList.isEmpty()) {
-                EmptyContent("No News")
+                EmptyContent(
+                    message = stringResource(Res.string.no_news),
+                    icon = Res.drawable.ic_browse,
+                    onRetryClick = {
+                        headLineViewModel.getHeadLine()
+                    }
+                )
             } else {
                 ArticleListScreen(articleList, navController = navController)
             }
         },
-        onError = { errorMsg ->
-            EmptyContent(errorMsg)
-
-            // 🔹 Trigger snackbar only once per error
-            LaunchedEffect(errorMsg) {
-                snackbarHostState.showSnackbar(
-                    message = errorMsg,
-                    withDismissAction = true // gives an "X" to dismiss
-                )
-            }
+        onError = {
+            EmptyContent(
+                message = it,
+                icon = Res.drawable.ic_network_error,
+                onRetryClick = {
+                    headLineViewModel.getHeadLine()
+                }
+            )
         }
     )
 }

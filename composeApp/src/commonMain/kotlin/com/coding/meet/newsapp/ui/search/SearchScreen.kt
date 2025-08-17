@@ -16,6 +16,12 @@ import com.coding.meet.newsapp.ui.common.EmptyContent
 import com.coding.meet.newsapp.ui.common.ShimmerEffect
 import com.coding.meet.newsapp.ui.common.videmodel.rememberViewModel
 import com.coding.meet.newsapp.ui.search.components.SearchBarScreen
+import news_kmp_app.composeapp.generated.resources.Res
+import news_kmp_app.composeapp.generated.resources.ic_browse
+import news_kmp_app.composeapp.generated.resources.ic_network_error
+import news_kmp_app.composeapp.generated.resources.no_news
+import news_kmp_app.composeapp.generated.resources.type_to_search
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SearchScreen(navController: NavController) {
@@ -36,7 +42,6 @@ fun SearchScreen(navController: NavController) {
             },
             onSearch = { query ->
                 if (query.trim().isNotEmpty()) {
-                    println(query)
                     searchViewModel.searchQueryNews(query)
                 }
             }
@@ -44,18 +49,38 @@ fun SearchScreen(navController: NavController) {
 
         uiState.DisplayResult(
             onIdle = {
-                EmptyContent("Type to Search")
+                EmptyContent(
+                    message = stringResource(Res.string.type_to_search),
+                    icon = Res.drawable.ic_browse,
+                    isOnRetryBtnVisible = false
+                )
             },
             onLoading = { ShimmerEffect() },
             onSuccess = { articleList ->
                 if (articleList.isEmpty()) {
-                    EmptyContent("No News")
+                    EmptyContent(
+                        message = stringResource(Res.string.no_news),
+                        icon = Res.drawable.ic_browse,
+                        onRetryClick = {
+                            if (searchQuery.trim().isNotEmpty()) {
+                                searchViewModel.searchQueryNews(searchQuery)
+                            }
+                        }
+                    )
                 } else {
                     ArticleListScreen(articleList, navController = navController)
                 }
             },
             onError = {
-                EmptyContent(it)
+                EmptyContent(
+                    message = it,
+                    icon = Res.drawable.ic_network_error,
+                    onRetryClick = {
+                        if (searchQuery.trim().isNotEmpty()) {
+                            searchViewModel.searchQueryNews(searchQuery)
+                        }
+                    }
+                )
             }
         )
     }

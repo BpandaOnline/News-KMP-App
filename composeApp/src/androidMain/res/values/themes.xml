@@ -3,4 +3,9 @@
 
     <style name="Theme.NewsTheme" parent="@android:style/Theme.Material.Light.NoActionBar" />
 
+    <style name="Theme.MySplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.NewsTheme</item>
+    </style>
+
 </resources>
