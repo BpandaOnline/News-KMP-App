@@ -1,6 +1,7 @@
 package com.coding.meet.newsapp.utils
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
@@ -33,3 +34,17 @@ object AppSettings {
         }
     }
 }
+
+expect class VideoPlayer() {
+
+    fun init(context: Any?)
+    fun play(videoUrl: String)
+    fun pause()
+    fun stop()
+    fun release()
+
+    @Composable
+    fun VideoView(videoUrl: String, modifier: Modifier = Modifier)
+}
+@Composable
+expect fun getPlatformContext(): Any?

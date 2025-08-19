@@ -15,6 +15,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         setActivityProvider{ this }
+
         setContent {
             App()
         }

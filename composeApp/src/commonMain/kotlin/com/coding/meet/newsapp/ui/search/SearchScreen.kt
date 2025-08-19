@@ -2,12 +2,17 @@ package com.coding.meet.newsapp.ui.search
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.coding.meet.newsapp.data.repository.OnlineNewsRepository
 import com.coding.meet.newsapp.theme.mediumPadding
@@ -16,6 +21,9 @@ import com.coding.meet.newsapp.ui.common.EmptyContent
 import com.coding.meet.newsapp.ui.common.ShimmerEffect
 import com.coding.meet.newsapp.ui.common.videmodel.rememberViewModel
 import com.coding.meet.newsapp.ui.search.components.SearchBarScreen
+import com.coding.meet.newsapp.utils.VideoPlayer
+import com.coding.meet.newsapp.utils.getPlatformContext
+import com.coding.meet.newsapp.utils.getType
 import news_kmp_app.composeapp.generated.resources.Res
 import news_kmp_app.composeapp.generated.resources.ic_browse
 import news_kmp_app.composeapp.generated.resources.ic_network_error
@@ -32,9 +40,25 @@ fun SearchScreen(navController: NavController) {
     val searchViewModel = rememberViewModel { SearchViewModel(OnlineNewsRepository()) }
     val uiState by searchViewModel.newsStateFlow.collectAsState()
 
-    Column(
-        verticalArrangement = Arrangement.spacedBy(mediumPadding)
-    ) {
+//    val videoPlayer = remember {
+//        VideoPlayer().apply {
+//            init(context = null) // init immediately when created
+//        }
+//    }
+
+//    if (getType().toString() == "DESKTOP") {
+//        videoPlayer.VideoView(
+//            videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+//            modifier = Modifier.size(640.dp, 480.dp)
+//        )
+//    }else{
+//        videoPlayer.VideoView(
+//            videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+//        )
+//    }
+
+    Column(verticalArrangement = Arrangement.spacedBy(mediumPadding))
+    {
         SearchBarScreen(
             text = searchQuery,
             onValueChange = {

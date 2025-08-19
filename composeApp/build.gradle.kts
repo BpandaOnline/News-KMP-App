@@ -51,6 +51,14 @@ kotlin {
 
             // Splash API
             implementation(libs.androidx.core.splashscreen)
+
+            implementation("androidx.media3:media3-exoplayer:1.1.1")   // core ExoPlayer functionality
+
+            // Optional: UI components
+            implementation("androidx.media3:media3-ui:1.1.1")           // PlayerView, controls
+
+            // Optional: media session support
+            implementation("androidx.media3:media3-session:1.1.1")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -86,6 +94,7 @@ kotlin {
 
             // Kermit  for logging
             implementation(libs.kermit)
+            implementation("com.kizitonwose.calendar:compose-multiplatform:2.8.0")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -95,6 +104,7 @@ kotlin {
             // ktor
             implementation(libs.ktor.client.okhttp)
             implementation(libs.kotlinx.coroutines.swing)
+            implementation("uk.co.caprica:vlcj:4.7.0")
         }
         iosMain.dependencies {
             //Coil
@@ -165,6 +175,10 @@ buildkonfig {
         }
 
     defaultConfigs {
-        buildConfigField(FieldSpec.Type.STRING, "API_KEY", localProperties["API_KEY"]?.toString() ?: "",)
+        buildConfigField(
+            FieldSpec.Type.STRING,
+            "API_KEY",
+            localProperties["API_KEY"]?.toString() ?: "",
+        )
     }
 }
