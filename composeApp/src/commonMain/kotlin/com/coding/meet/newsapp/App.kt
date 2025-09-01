@@ -10,6 +10,8 @@ import com.coding.meet.newsapp.ui.navigation.graphs.RootNavGraph
 import com.coding.meet.newsapp.ui.setting.SettingViewModel
 import com.coding.meet.newsapp.utils.AppPreferences
 import com.coding.meet.newsapp.utils.dataStorePreference
+import com.coding.meet.newsapp.utils.getDatabaseBuilder
+import com.coding.meet.newsapp.utils.getRoomDatabase
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -21,8 +23,8 @@ fun App() {
 
     val settingViewModel = rememberViewModel { SettingViewModel(appPreferences) }
     val currentTheme by settingViewModel.currentTheme.collectAsState()
-
+    val newsDao = remember { getRoomDatabase(getDatabaseBuilder()).newsDao() }
     NewsAppTheme(currentTheme) {
-        RootNavGraph(settingViewModel)
+        RootNavGraph(settingViewModel,newsDao)
     }
 }

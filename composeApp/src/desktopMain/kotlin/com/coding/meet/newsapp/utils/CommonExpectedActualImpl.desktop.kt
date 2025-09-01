@@ -11,6 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.SwingPanel
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import com.coding.meet.newsapp.data.database.NewsDatabase
 import uk.co.caprica.vlcj.factory.discovery.NativeDiscovery
 import uk.co.caprica.vlcj.player.component.CallbackMediaPlayerComponent
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent
@@ -18,6 +21,7 @@ import java.awt.Component
 import java.awt.Desktop
 import java.awt.Toolkit
 import java.awt.datatransfer.StringSelection
+import java.io.File
 import java.net.URI
 import java.util.Locale
 import java.util.UUID
@@ -152,3 +156,11 @@ fun showVlcAlert(message: String) {
 
 @Composable
 actual fun getPlatformContext(): Any? = null
+
+
+actual fun getDatabaseBuilder(): RoomDatabase.Builder<NewsDatabase> {
+    val dbFile = File(System.getProperty("java.io.tmpdir"), DB_NAME)
+    return Room.databaseBuilder<NewsDatabase>(
+        name = dbFile.absolutePath
+    )
+}

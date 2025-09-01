@@ -1,10 +1,14 @@
 package com.coding.meet.newsapp.data.model
 
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
+@Entity(tableName = "articleTable")
 data class Data(
     @SerialName("createdate")
     val createdate: String,
@@ -13,6 +17,8 @@ data class Data(
     @SerialName("image")
     val image: String?,
     @SerialName("postid")
+    @PrimaryKey(autoGenerate = false)
+    @ColumnInfo("articleId")
     val postid: String,
     @SerialName("tags")
     val tags: String,

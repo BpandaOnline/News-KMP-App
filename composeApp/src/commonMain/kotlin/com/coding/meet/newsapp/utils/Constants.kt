@@ -26,6 +26,8 @@ val apiKey = BuildKonfig.API_KEY
 const val dataStoreFileName = "setting.preferences_pb"
 
 const val BASE_URL = "https://bpanda.online/"
+
+const val DB_NAME = "NewsDB"
 enum class Type{
     Mobile,
     Desktop

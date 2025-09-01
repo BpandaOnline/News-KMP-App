@@ -40,23 +40,6 @@ fun SearchScreen(navController: NavController) {
     val searchViewModel = rememberViewModel { SearchViewModel(OnlineNewsRepository()) }
     val uiState by searchViewModel.newsStateFlow.collectAsState()
 
-//    val videoPlayer = remember {
-//        VideoPlayer().apply {
-//            init(context = null) // init immediately when created
-//        }
-//    }
-
-//    if (getType().toString() == "DESKTOP") {
-//        videoPlayer.VideoView(
-//            videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-//            modifier = Modifier.size(640.dp, 480.dp)
-//        )
-//    }else{
-//        videoPlayer.VideoView(
-//            videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-//        )
-//    }
-
     Column(verticalArrangement = Arrangement.spacedBy(mediumPadding))
     {
         SearchBarScreen(

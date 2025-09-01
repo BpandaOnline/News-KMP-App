@@ -13,6 +13,7 @@ composeHotReload = "1.0.0-beta04"
 kotlin = "2.2.0"
 navigationCompose = "2.9.0-beta03"
 ksp = "2.2.0-2.0.2"
+sqlite = "2.5.2"
 coil3 = "3.0.0-alpha06"
 coroutines = "1.10.2"
 lifecycleViewmodelKtx = "2.9.2"
@@ -23,6 +24,7 @@ kermit = "2.0.6"
 coreSplashscreen = "1.0.1"
 mediaPlayerKMP = "2.0.9"
 media3Exoplayer = "1.8.0"
+androidx-room = "2.7.2"
 
 
 [libraries]
@@ -54,6 +56,9 @@ kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 
 mediaplayer-kmp = { module = "io.github.khubaibkhan4:mediaplayer-kmp", version = "2.0.9" }
 androidx-media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3Exoplayer" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidx-room" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -62,6 +67,9 @@ composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "com
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "androidx-room" }

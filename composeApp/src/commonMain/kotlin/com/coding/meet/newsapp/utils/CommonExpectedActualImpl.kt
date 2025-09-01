@@ -5,8 +5,13 @@ import androidx.compose.ui.Modifier
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
+import androidx.room.RoomDatabase
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import com.coding.meet.newsapp.data.database.NewsDatabase
 import kotlinx.atomicfu.locks.SynchronizedObject
 import kotlinx.atomicfu.locks.synchronized
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import okio.Path.Companion.toPath
 
 expect fun getType(): Type
@@ -48,3 +53,15 @@ expect class VideoPlayer() {
 }
 @Composable
 expect fun getPlatformContext(): Any?
+
+expect fun getDatabaseBuilder() : RoomDatabase.Builder<NewsDatabase>
+
+fun getRoomDatabase(
+    builder: RoomDatabase.Builder<NewsDatabase>
+): NewsDatabase{
+    return builder
+        .setDriver(BundledSQLiteDriver())
+        .setQueryCoroutineContext(Dispatchers.IO)
+        .build()
+}
+

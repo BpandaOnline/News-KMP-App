@@ -11,10 +11,14 @@ plugins {
     alias(libs.plugins.composeHotReload)
     alias(libs.plugins.buildkonfig)
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
-
+    sourceSets.commonMain {
+        kotlin.srcDir("build/generated/ksp/metadata")
+    }
     androidTarget {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
@@ -95,6 +99,10 @@ kotlin {
             // Kermit  for logging
             implementation(libs.kermit)
             implementation("com.kizitonwose.calendar:compose-multiplatform:2.8.0")
+
+            // Room + Sqlite
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.sqlite.bundled)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -113,6 +121,9 @@ kotlin {
 
             // Ktor
             implementation(libs.ktor.client.darwin)
+        }
+        dependencies {
+            ksp(libs.androidx.room.compiler)
         }
     }
 }
@@ -145,10 +156,16 @@ android {
     buildFeatures {
         compose = true
     }
+
+    dependencies {
+        debugImplementation(compose.uiTooling)
+    }
+
 }
 
-dependencies {
-    debugImplementation(compose.uiTooling)
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
 
 compose.desktop {

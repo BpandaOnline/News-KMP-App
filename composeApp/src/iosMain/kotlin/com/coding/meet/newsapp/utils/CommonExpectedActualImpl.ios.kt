@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import com.coding.meet.newsapp.data.database.NewsDatabase
 import io.ktor.client.request.invoke
 import platform.UIKit.*
 import platform.Foundation.*
@@ -17,6 +18,8 @@ import platform.AVFoundation.play
 import platform.AVFoundation.seekToTime
 import platform.CoreMedia.CMTimeMake
 import platform.Foundation.NSURL
+import androidx.room.Room
+import androidx.room.RoomDatabase
 
 actual fun getType(): Type {
     return Type.Mobile
@@ -82,3 +85,11 @@ actual class VideoPlayer actual constructor() {
 
 @Composable
 actual fun getPlatformContext(): Any? = null
+
+
+actual fun getDatabaseBuilder(): RoomDatabase.Builder<NewsDatabase> {
+    val dbFilePath = NSHomeDirectory() + "/$DB_NAME"
+    return Room.databaseBuilder<NewsDatabase>(
+        name = dbFilePath,
+    )
+}

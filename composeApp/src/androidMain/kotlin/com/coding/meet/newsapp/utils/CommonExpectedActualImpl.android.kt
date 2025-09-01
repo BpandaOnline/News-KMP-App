@@ -12,6 +12,9 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import com.coding.meet.newsapp.data.database.NewsDatabase
 import java.util.UUID
 actual fun getType(): Type {
     return Type.Mobile
@@ -102,4 +105,13 @@ actual class VideoPlayer actual constructor() {
 @Composable
 actual fun getPlatformContext(): Any? {
     return LocalContext.current
+}
+
+actual fun getDatabaseBuilder(): RoomDatabase.Builder<NewsDatabase> {
+    val activity = activityProvider.invoke()
+    val dbFile = activity.getDatabasePath(DB_NAME)
+    return Room.databaseBuilder<NewsDatabase>(
+        context = activity,
+        name = dbFile.absolutePath
+    )
 }
