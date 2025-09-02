@@ -1,6 +1,7 @@
 package com.coding.meet.newsapp.data.database
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -16,5 +17,12 @@ interface NewsDao {
     @Query("Select * from articleTable")
     fun getArticles(): Flow<List<Data>>
 
+    @Query("Select * from articleTable where articleId=:articleId")
+    suspend fun getArticle(articleId:String): Data?
 
+    @Delete
+    suspend fun delete(article: Data)
+
+    @Query("Delete from articleTable")
+    fun deleteAllArticle()
 }

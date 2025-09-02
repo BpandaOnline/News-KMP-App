@@ -2,6 +2,7 @@ package com.coding.meet.newsapp.ui.setting
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.coding.meet.newsapp.data.repository.LocalNewsRepository
 import com.coding.meet.newsapp.ui.common.videmodel.KmpViewModel
 import com.coding.meet.newsapp.utils.AppPreferences
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +14,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class SettingViewModel(
-    private val appPreferences: AppPreferences
+    private val appPreferences: AppPreferences,
+    private val localNewsRepository: LocalNewsRepository
 ) : KmpViewModel(){
     private val _currentThem: MutableStateFlow<String?> = MutableStateFlow(null)
 
@@ -23,6 +25,11 @@ class SettingViewModel(
         currentThemeGet()
     }
 
+    fun deleteAllBookMark(){
+        viewModelScope.launch(Dispatchers.IO) {
+            localNewsRepository.deleteAllArticle()
+        }
+    }
     private fun currentThemeGet() = runBlocking {
         _currentThem.update {
             appPreferences.getTheme()

@@ -18,6 +18,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
@@ -32,6 +33,7 @@ import com.coding.meet.newsapp.theme.xLargePadding
 import com.coding.meet.newsapp.ui.common.videmodel.rememberViewModel
 import com.coding.meet.newsapp.utils.shareLink
 import news_kmp_app.composeapp.generated.resources.Res
+import news_kmp_app.composeapp.generated.resources.ic_bookmark_filled
 import news_kmp_app.composeapp.generated.resources.ic_bookmark_outlined
 import news_kmp_app.composeapp.generated.resources.ic_browse
 import news_kmp_app.composeapp.generated.resources.logo
@@ -52,6 +54,11 @@ fun ArticleDetailScreen(
         ArticleDetailViewModel(LocalNewsRepository(newsDao))
     }
     val uriHandler = LocalUriHandler.current
+
+    LaunchedEffect(Unit){
+        articleDetailViewModel.isArticleBookmark(article)
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -96,7 +103,7 @@ fun ArticleDetailScreen(
                         articleDetailViewModel.bookmarkArticle(article)
                     }) {
                         Icon(
-                            painter = painterResource(Res.drawable.ic_bookmark_outlined),
+                            painter = painterResource(if(articleDetailViewModel.isBookmarked) Res.drawable.ic_bookmark_filled else Res.drawable.ic_bookmark_outlined),
                             contentDescription = null
                         )
                     }
