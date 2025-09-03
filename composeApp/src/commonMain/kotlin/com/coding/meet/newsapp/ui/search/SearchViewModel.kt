@@ -1,21 +1,21 @@
 package com.coding.meet.newsapp.ui.search
 
+import androidx.lifecycle.ViewModel
 import com.coding.meet.newsapp.data.model.Data
 import com.coding.meet.newsapp.data.model.NewsResponse
 import com.coding.meet.newsapp.data.repository.OnlineNewsRepository
-import com.coding.meet.newsapp.ui.common.videmodel.KmpViewModel
 import com.coding.meet.newsapp.utils.Resource
-import com.coding.meet.newsapp.utils.articles
 import io.ktor.client.call.body
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import androidx.lifecycle.viewModelScope
 
 class SearchViewModel(
     private val onlineNewsRepository: OnlineNewsRepository
-) : KmpViewModel() {
+) : ViewModel() {
     private val _newsStateFlow = MutableStateFlow<Resource<List<Data>>>(Resource.Idle)
     val newsStateFlow: StateFlow<Resource<List<Data>>> get() = _newsStateFlow
 

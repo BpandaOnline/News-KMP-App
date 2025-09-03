@@ -17,8 +17,7 @@ import kotlinx.serialization.json.Json
 
 @Composable
 fun RootNavGraph(
-    settingViewModel: SettingViewModel,
-    newsDao: NewsDao
+    settingViewModel: SettingViewModel
 ) {
     val rootNavController = rememberNavController()
     NavHost(
@@ -27,7 +26,7 @@ fun RootNavGraph(
         startDestination = Graph.MainScreenGraph
     ){
         composable(route = Graph.MainScreenGraph){
-            MainScreen(rootNavController,newsDao)
+            MainScreen(rootNavController)
         }
 
         composable(route = SettingRouteScreen.Setting.route){
@@ -37,7 +36,7 @@ fun RootNavGraph(
         composable(route = NewsRouteScreen.NewsDetail.route){
             rootNavController.previousBackStackEntry?.savedStateHandle?.get<String>("article")?.let {
                 val article : Data = Json.decodeFromString(it)
-                ArticleDetailScreen(rootNavController, article,newsDao)
+                ArticleDetailScreen(rootNavController, article)
             }
         }
     }

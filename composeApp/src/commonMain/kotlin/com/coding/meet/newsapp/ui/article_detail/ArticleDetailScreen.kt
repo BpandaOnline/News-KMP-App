@@ -26,11 +26,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
-import com.coding.meet.newsapp.data.database.NewsDao
 import com.coding.meet.newsapp.data.model.Data
-import com.coding.meet.newsapp.data.repository.LocalNewsRepository
+import com.coding.meet.newsapp.di.koinViewModel
 import com.coding.meet.newsapp.theme.xLargePadding
-import com.coding.meet.newsapp.ui.common.videmodel.rememberViewModel
 import com.coding.meet.newsapp.utils.shareLink
 import news_kmp_app.composeapp.generated.resources.Res
 import news_kmp_app.composeapp.generated.resources.ic_bookmark_filled
@@ -46,13 +44,10 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun ArticleDetailScreen(
     navController: NavController,
-    article: Data,
-    newsDao: NewsDao
+    article: Data
 ) {
 
-    val articleDetailViewModel = rememberViewModel {
-        ArticleDetailViewModel(LocalNewsRepository(newsDao))
-    }
+    val articleDetailViewModel = koinViewModel<ArticleDetailViewModel>()
     val uriHandler = LocalUriHandler.current
 
     LaunchedEffect(Unit){

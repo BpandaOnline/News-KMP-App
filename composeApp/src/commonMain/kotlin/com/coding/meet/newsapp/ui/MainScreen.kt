@@ -22,7 +22,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.coding.meet.newsapp.data.database.NewsDao
 import com.coding.meet.newsapp.ui.navigation.NewsBottomNavigationBar
 import com.coding.meet.newsapp.ui.navigation.SettingRouteScreen
 import com.coding.meet.newsapp.ui.navigation.graphs.MainNavGraph
@@ -34,8 +33,7 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
-    rootNavController: NavHostController,
-    newsDao: NewsDao
+    rootNavController: NavHostController
 ) {
 
     val homeNavController = rememberNavController()
@@ -127,6 +125,6 @@ fun MainScreen(
             )
         }
     ) { innerPadding ->
-        MainNavGraph(rootNavController, homeNavController, innerPadding,newsDao)
+        MainNavGraph(rootNavController, homeNavController, innerPadding)
     }
 }

@@ -1,11 +1,11 @@
 package com.coding.meet.newsapp.ui.headline
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.coding.meet.newsapp.data.model.Data
 import com.coding.meet.newsapp.data.model.NewsResponse
 import com.coding.meet.newsapp.data.repository.OnlineNewsRepository
-import com.coding.meet.newsapp.ui.common.videmodel.KmpViewModel
 import com.coding.meet.newsapp.utils.Resource
-import com.coding.meet.newsapp.utils.articles
 import io.ktor.client.call.body
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class HeadLineViewModel(
     private val onlineNewsRepository: OnlineNewsRepository
-) : KmpViewModel() {
+) : ViewModel() {
     private val _newsStateFlow = MutableStateFlow<Resource<List<Data>>>(Resource.Loading)
     val newsStateFlow: StateFlow<Resource<List<Data>>> get() = _newsStateFlow
 

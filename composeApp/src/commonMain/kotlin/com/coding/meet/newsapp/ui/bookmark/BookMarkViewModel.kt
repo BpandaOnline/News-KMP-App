@@ -1,8 +1,9 @@
 package com.coding.meet.newsapp.ui.bookmark
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.coding.meet.newsapp.data.model.Data
 import com.coding.meet.newsapp.data.repository.LocalNewsRepository
-import com.coding.meet.newsapp.ui.common.videmodel.KmpViewModel
 import com.coding.meet.newsapp.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -13,7 +14,7 @@ import kotlinx.coroutines.launch
 
 class BookMarkViewModel(
     private val localNewsRepository: LocalNewsRepository
-) : KmpViewModel() {
+) : ViewModel() {
     private val _newsStateFlow = MutableStateFlow<Resource<List<Data>>>(Resource.Loading)
     val newsStateFlow: StateFlow<Resource<List<Data>>> get() = _newsStateFlow
 
